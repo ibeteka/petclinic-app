@@ -1,2 +1,2 @@
 FROM Alpine:3.14
-    ADD target/java-jenkins-docker.jar java-jenkins-docker.jar
+    ADD target/petclinic.war petclinic.war
