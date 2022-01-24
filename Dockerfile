@@ -1,3 +1,3 @@
 FROM alpine:3.14
-    COPY ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-app-pipeline/petclinic/target/petclinic.war target/petclinic.war
+    WORKDIR ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-app-pipeline/petclinic
     ADD target/petclinic.war petclinic.war
