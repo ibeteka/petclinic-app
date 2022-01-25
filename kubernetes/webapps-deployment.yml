@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapps-deployment
+  labels:
+    app: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: webapp
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:    
+      containers:
+      - image: ibrahimtounkaradev/petclinic:latest
+        name: petclinic
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: src
+          mountPath: "/petclinic/src/main/java"
+          #subPath: "mysql"
+      - image: php:apache-buster
+        name: sales
+        ports:
+        - containerPort: 80                     
+      volumes:
+      - name: src
+        persistentVolumeClaim:
+          claimName: petclinic-pvc
