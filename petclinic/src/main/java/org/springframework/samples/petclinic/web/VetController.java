@@ -30,7 +30,6 @@ import java.util.Map;
  * @author Mark Fisher
  * @author Ken Krebs
  * @author Arjen Poutsma
- * @Developer Ibeteka
  */
 @Controller
 public class VetController {
