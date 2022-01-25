@@ -11,10 +11,18 @@ pipeline{
 		stage('Build') {
 
 			steps {
+                sh 'mvn clean package'
 				sh 'docker build -t ibrahimtounkaradev/petclinic:latest .'
 			}
 		}
+         
+		stage('Build Docker Image') {
 
+			steps {
+				sh 'docker build -t ibrahimtounkaradev/petclinic:latest .'
+			}
+		}
+		
 		stage('Login') {
 
 			steps {
@@ -22,12 +30,21 @@ pipeline{
 			}
 		}
 
-		stage('Push') {
+		stage('Push Docker Image') {
 
 			steps {
 				sh 'docker push ibrahimtounkaradev/petclinic:latest'
 			}
 		}
+		
+		/*stage('Deploy') {
+
+		   steps {
+		       sh "docker stop petclinic | true"
+               sh "docker rm petclinic | true"
+			   sh "docker run --name petclinic -d -p 9004:8080 ibrahimtounkaradev/petclinic:latest"
+		    }
+        }*/			
 	}
 
 	post {
