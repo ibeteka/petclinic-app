@@ -13,6 +13,6 @@ services:
      container_name: mysql
      image: mariadb:10.5.13
      volumes:
-       - mysql/: ./petclinic/src/main/resources/db/mysql/ 
+       - mysql/: './petclinic/src/main/resources/db/mysql/' 
      ports:
        - "3306:3306"
