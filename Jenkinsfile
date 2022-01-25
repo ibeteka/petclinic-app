@@ -11,8 +11,8 @@ pipeline{
 		stage('Build') {
 
 			steps {
-                sh 'mvn -f ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline/petclinic clean package'
-			}
+                sh 'mvn -f ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline/petclinic clean install -P MySQL -DskipTests'
+                          }
 		}
          
 		stage('Build Docker Image') {
