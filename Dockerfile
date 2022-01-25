@@ -12,7 +12,7 @@ FROM alpine:3.14
   RUN sh ./start-petclinic.sh
   
   
-  /*RUN tar -xf apache-tomcat-9.0.55.tar.gz
-  RUN tar -xf apache-maven-3.8.3-bin.tar.gz
-  RUN tar -xf openjdk-11+28_linux-x64_bin.tar.gz
-  RUN tar -xf zulu11.54.23-ca-jdk11.0.14-linux_musl_x64.tar.gz*/
+  #RUN tar -xf apache-tomcat-9.0.55.tar.gz
+  #RUN tar -xf apache-maven-3.8.3-bin.tar.gz
+  #RUN tar -xf openjdk-11+28_linux-x64_bin.tar.gz
+  #RUN tar -xf zulu11.54.23-ca-jdk11.0.14-linux_musl_x64.tar.gz
