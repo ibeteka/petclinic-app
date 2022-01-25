@@ -19,7 +19,7 @@ pipeline{
 
 			steps {
 				sh 'cd ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline'
-				sh 'docker build -f Dockerfile -t ibrahimtounkaradev/petclinic:latest .'
+				sh 'docker build -f Dockerfile -t ibrahimtounkaradev/petclinic-dev:latest .'
 			}
 		}
 		
@@ -33,7 +33,7 @@ pipeline{
 		stage('Push Docker Image') {
 
 			steps {
-				sh 'docker push ibrahimtounkaradev/petclinic:latest'
+				sh 'docker push ibrahimtounkaradev/petclinic-dev:latest'
 			}
 		}
 		
@@ -42,7 +42,7 @@ pipeline{
 		   steps {
 		       sh "docker stop petclinic | true"
                sh "docker rm petclinic | true"
-			   sh "docker run --name petclinic -d -p 9004:8080 ibrahimtounkaradev/petclinic:latest"
+			   sh "docker run --name petclinic -d -p 9004:8080 ibrahimtounkaradev/petclinic-dev:latest"
 		    }
         }*/			
 	}

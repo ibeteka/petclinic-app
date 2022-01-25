@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+   petclinic-front:
+     container_name: webfrontapp
+     image: ibrahimtounkaradev/petclinic-dev:latest
+     volumes:
+       - ./:./
+     ports:
+       - "8080:8080"
+     command: sh -c "./start-petclinic.sh"
+   db:
+     container_name: mysql
+     image: mariadb:10.5.13
+     volumes:
+       - mysql/: ./petclinic/src/main/resources/db/mysql/ 
+     ports:
+       - "3306:3306"
