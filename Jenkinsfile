@@ -12,14 +12,14 @@ pipeline{
 
 			steps {
                 sh 'mvn -f ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline/petclinic clean package'
-				sh 'docker build -t ibrahimtounkaradev/petclinic:latest .'
 			}
 		}
          
 		stage('Build Docker Image') {
 
 			steps {
-				sh 'docker build -t ibrahimtounkaradev/petclinic:latest .'
+				sh 'cd ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline'
+				sh 'docker build -f Dockerfile -t ibrahimtounkaradev/petclinic:latest .'
 			}
 		}
 		
