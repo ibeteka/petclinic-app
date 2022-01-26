@@ -9,7 +9,7 @@ FROM alpine:3.14
   RUN mv zulu11.54.23-ca-jdk11.0.14-linux_musl_x64 zulu11.52.13-ca-jdk11.0.13-linux_musl_x64
   
   #Start services
-  RUN cd /home/ibrahim/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline
+  RUN cd ~/home/ibrahim/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline
   RUN sh ./build-petclinic.sh
   RUN sh ./start-petclinic.sh
   
