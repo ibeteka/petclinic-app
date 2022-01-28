@@ -1,5 +1,4 @@
-version: '3.2'
-
+version: '3'
 services:
    petclinic-front:
      container_name: webfrontapp
@@ -8,11 +7,17 @@ services:
        - ./petclinic/src/main/java:/petclinic/src/main/java
      ports:
        - "8080:8080"
-     command: sh -c "./start-petclinic.sh"
+     stdin_open: true
+     tty: true
    db:
-     container_name: mysql
-     image: mariadb:10.5.13
-     volumes:
-       - ./petclinic/src/main/resources/db/mysql:/petclinic/src/main/resources/db/mysql
-     ports:
-       - "3306:3306"
+    container_name: mysql
+    image: mariadb:10.5.13
+    environment:
+          - MYSQL_USER=petclinic
+          - MYSQL_PASSWORD=petclinic123
+          - MYSQL_DATABASE=petclinic
+          - MYSQL_ROOT_PASSWORD=petclinic123
+    volumes:
+      - ./petclinic/src/main/resources/db/mysql/schema.sql:/docker-entrypoint-initdb.d/schema.sql 
+    ports:
+      - "3306:3306"
