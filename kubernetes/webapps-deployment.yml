@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapps-deployment
+  labels:
+    app: webapp
+    dna: petclinic
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webapp
+      dna: petclinic
+  template:
+    metadata:
+      labels:
+        app: webapp
+        dna: petclinic
+    spec: 
+      containers:
+      - image: ibrahimtounkaradev/petclinic-dev:latest
+        name: petclinic
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: petclinic-src
+          mountPath: "/petclinic/src/main/java"
+      volumes:
+      - name: petclinic-src
+        persistentVolumeClaim:
+          claimName: petclinic-src-pvc

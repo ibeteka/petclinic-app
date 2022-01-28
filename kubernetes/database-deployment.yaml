@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: database-deployment
+  labels:
+    app: db
+    dna: petclinic
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: db
+      dna: petclinic
+  template:
+    metadata:
+      labels:
+        app: db
+        dna: petclinic
+    spec:
+      containers: 
+      - image: mariadb:10.5.13
+        name: mysql
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret
+              key: password
+        - name: MYSQL_ROOT_USER
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secret      
+              key: user
+        ports:
+        - containerPort: 3306
+        volumeMounts:
+        - name: database-volume
+          mountPath: "/petclinic/src/main/resources/db/mysql"                     
+      volumes:
+      - name: database-volume
+        persistentVolumeClaim:
+          claimName: database-pvc
