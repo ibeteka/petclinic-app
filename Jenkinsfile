@@ -41,7 +41,7 @@ pipeline{
 
 		   steps {
           sh 'cd ~/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline-dev/kubernetes'
-		      sh("kubectl -f apply database-deployment.yaml  secret-mysql.yml volumeClaim.yml persisentVolume.yaml services.yml webapps-deployment.yml")
+		      sh("kubectl apply -f database-deployment.yaml secret-mysql.yml volumeClaim.yml persisentVolume.yaml services.yml webapps-deployment.yml")
 		    }
     }
 	}
