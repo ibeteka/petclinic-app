@@ -37,14 +37,13 @@ pipeline{
 			}
 		}
 		
-		/*stage('Deploy') {
+		stage('Deploy to Production Server') {
 
 		   steps {
-		       sh "docker stop petclinic | true"
-               sh "docker rm petclinic | true"
-			   sh "docker run --name petclinic -d -p 9004:8080 ibrahimtounkaradev/petclinic:latest"
+		       sh "cd /home/ibrahim/python_training_fitec/jenkins/JENKINS_HOME/workspace/petclinic-pipeline/"
+			     sh "kubectl apply -f kubernetes/"
 		    }
-        }*/			
+     }
 	}
 
 	post {
