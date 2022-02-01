@@ -33,10 +33,3 @@ spec:
               key: user
         ports:
         - containerPort: 3306
-        volumeMounts:
-        - name: database-volume
-          mountPath: "/petclinic/src/main/resources/db/mysql"                     
-      volumes:
-      - name: database-volume
-        persistentVolumeClaim:
-          claimName: database-pvc

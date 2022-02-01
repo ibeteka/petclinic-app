@@ -18,14 +18,7 @@ spec:
         dna: petclinic
     spec: 
       containers:
-      - image: ibrahimtounkaradev/petclinic-dev:latest
+      - image: ibrahimtounkaradev/petclinic:latest
         name: petclinic
         ports:
         - containerPort: 8080
-        volumeMounts:
-        - name: petclinic-src
-          mountPath: "/petclinic/src/main/java"
-      volumes:
-      - name: petclinic-src
-        persistentVolumeClaim:
-          claimName: petclinic-src-pvc      
